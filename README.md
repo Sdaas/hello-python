@@ -23,13 +23,15 @@ Note
 -->
 
 <!-- vscode-markdown-toc -->
-* [Usage](#Usage)
 * [Developer Setup](#DeveloperSetup)
 	* [Python Setup](#PythonSetup)
 	* [Visual Code Setup](#VisualCodeSetup)
 	* [Setup Pre-Commit Hook to Clear the output of Notebooks](#SetupPre-CommitHooktoCleartheoutputofNotebooks)
 	* [Setup the Virtual Environment](#SetuptheVirtualEnvironment)
-	* [Installing and managing packages](#Installingandmanagingpackages)
+	* [Installing and managing dependencies](#Installingandmanagingdependencies)
+	* [Useful Packages](#UsefulPackages)
+		* [pytest](#pytest)
+		* [python-dotenv](#python-dotenv)
 	* [Testing](#Testing)
 		* [Logging with Pytest](#LoggingwithPytest)
 * [Other Developer Notes](#OtherDeveloperNotes)
@@ -88,7 +90,7 @@ Note
 `deactivate` and then reactivate the virtual environment.
 
 
-### <a name='Installingandmanagingpackages'></a>Installing and managing dependencies
+### <a name='Installingandmanagingdependencies'></a>Installing and managing dependencies
 
 All dependencies should be listed in `requirements.txt` file. 
 
@@ -111,19 +113,21 @@ pyinstall() {
 ```
 Now just run `pyinstall xxx` and the `requirements.txt` file will be updated so you will not forget to commit it.
 
-### Useful Packages
+### <a name='UsefulPackages'></a>Useful Packages
 This repo is already setup with some useful packages. Here are some of them
 
-#### pytest
+#### <a name='pytest'></a>pytest
 
 Testing framework. See the section on [Testing](#Testing) for more details on how to use `pytest`.
 Also see https://docs.pytest.org/en/7.4.x/
 
-#### python-dotenv
+#### <a name='python-dotenv'></a>python-dotenv
 
 `python-dotenv`  reads key-value pairs from a `.env` file and can set them as environment variables.
+- Reads each key-value pair and add it to `os.environ`.
+- Does NOT override an environment variable that is already set, unless called with `override=True`.
 - See https://pypi.org/project/python-dotenv/ 
-- Don't use dotenv - thats an older and incorrect package
+- Warning : Don't use dotenv - thats an older and incorrect package
 - `pip install python-dotenv`or simply use `pyinstall python-dotenv` if you have added the snippet above
 
 Sample code
