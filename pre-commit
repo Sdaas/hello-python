@@ -1,0 +1,33 @@
+#!/bin/bash
+
+clearJupyterNotebooks() {
+  # Clear outputs of all staged Jupyter notebooks
+  echo "Clearing Jupyter notebook outputs..."
+  for nb in $(git diff --cached --name-only | grep '\.ipynb$'); do
+    if [ -f "$nb" ]; then
+      jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace "$nb"
+      git add "$nb"  # Re-add the cleaned notebook
+      echo "Cleaned: $nb"
+    fi
+  done
+}
+
+checkAndCommitRequirementsFile() {
+  # Check if requirements.txt has changed and stage it
+  echo "Checking requirements.txt..."
+  FILE="requirements.txt"
+  pip freeze > $FILE
+  if git diff --quiet HEAD -- "$FILE"; then
+      echo "$FILE has not changed since the last commit."
+  else
+      echo "$FILE has changed since the last commit. Staging it..."
+      git add "$FILE"
+  fi
+}
+
+# Main script execution
+echo "Running pre-commit checks..." 
+clearJupyterNotebooks
+echo "Pre-commit checks completed."
+echo "All changes are staged. You can now commit your changes."
+echo "If you want to skip this pre-commit hook, use the --no-verify option with git commit."    
