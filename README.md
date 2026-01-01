@@ -68,10 +68,12 @@ Note
     - Make sure to use the correct kernel - "Python (hello-python)"
     - Run `notebooks/app.ipynb`
 
+
 ## <a name='ImportantFilesandFolders'></a>Important Files and Folders
 
 - `app.py` - Main application file
 - `calculator` - Sample package
+- `setup.py` - Setup file for all the packages
 - `tests` - All unit tests are in this folder
 - `requirements.txt` - all dependencies
 - `dev-requirements.txt` - all developer dependencies including Jupyter
@@ -236,6 +238,28 @@ python -m ipykernel install --user --name=hello-python --display-name "Python (h
     - Choose **"Python (hello-python)"** from the list.
 
 This ensures your notebook is executing code with the same Python interpreter and packages as the rest of your project.
+
+#### Using packages in editable mode
+By default, Jupyter notebooks do not reflect changes made to the source code of modules immediately. To enable this, all the modules in this repo must be installed in "editable" mode.
+
+From the project root directory, run
+```bash
+pip install -e .
+```
+
+This command uses the `setup.py` file to install the package, and the `-e` flag (short for `--editable`) creates a symbolic link from your Python environment's `site-packages` directory to your source code.
+
+Even with the package installed in editable mode, Jupyter notebooks will not automatically reload the module every time you make a change. To enable automatic reloading, you need to use the `autoreload` extension.
+
+In a Jupyter notebook cell, run the following commands:
+
+```python
+%load_ext autoreload
+%autoreload 2
+```
+
+- `%load_ext autoreload`: This loads the `autoreload` extension.
+- `%autoreload 2`: This sets the `autoreload` mode to automatically reload all modules before executing any code.
 
 #### nbconvert
 
