@@ -56,9 +56,17 @@ Note
 - Activate it - `source .venv/bin/activate`
 - Install dependencies - `pip install -r requirements.txt`
 - Install developer dependencies - `pip install -r dev-requirements.txt`
-- Run all the tests - `pytest -v`
-- Run the app - `python app.py`
-
+- Command Line
+    - Run all the tests - `pytest -v`
+    - Run the app - `python app.py`
+- Jupyter Notebooks
+    - Register the virtual environment with Jupyter
+    ```bash
+    python -m ipykernel install --user --name=hello-python --display-name "Python (hello-python)"
+    ```
+    - Launch Jupyter notebook server - `jupyter notebook`
+    - Make sure to use the correct kernel - "Python (hello-python)"
+    - Run `notebooks/app.ipynb`
 
 ## <a name='ImportantFilesandFolders'></a>Important Files and Folders
 
