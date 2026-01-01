@@ -23,6 +23,8 @@ Note
 -->
 
 <!-- vscode-markdown-toc -->
+* [Jump Start for the Impatient](#JumpStartfortheImpatient)
+* [Important Files and Folders](#ImportantFilesandFolders)
 * [Developer Setup](#DeveloperSetup)
 	* [Python Setup](#PythonSetup)
 	* [Visual Code Setup](#VisualCodeSetup)
@@ -34,6 +36,7 @@ Note
 		* [python-dotenv](#python-dotenv)
 	* [Testing](#Testing)
 		* [Logging with Pytest](#LoggingwithPytest)
+	* [Jupyter Setup](#JupyterSetup)
 * [Other Developer Notes](#OtherDeveloperNotes)
 	* [Configure the Git user for this repo](#ConfiguretheGituserforthisrepo)
 	* [Setup SSH keys for Github](#SetupSSHkeysforGithub)
@@ -46,6 +49,26 @@ Note
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
 
+## <a name='JumpStartfortheImpatient'></a>Jump Start for the Impatient
+
+- Add `FOO=bar` to the `.env` file
+- Create a virtual environment - `virtualenv .venv`
+- Activate it - `source .venv/bin/activate`
+- Install dependencies - `pip install -r requirements.txt`
+- Install developer dependencies - `pip install -r dev-requirements.txt`
+- Run all the tests - `pytest -v`
+- Run the app - `python app.py`
+
+
+## <a name='ImportantFilesandFolders'></a>Important Files and Folders
+
+- `app.py` - Main application file
+- `calculator` - Sample package
+- `tests` - All unit tests are in this folder
+- `requirements.txt` - all dependencies
+- `dev-requirements.txt` - all developer dependencies including Jupyter
+- `notebooks` - Jupyter notebooks go here
+- `.env` - Environment variables go here (don't check into git pls)
 
 ## <a name='DeveloperSetup'></a>Developer Setup
 ### <a name='PythonSetup'></a>Python Setup
@@ -186,6 +209,25 @@ To see all the log messages regardless of whether the test passes or fails, run
 pytest -v --log-cli-level=INFO
 ```
 
+### <a name='JupyterSetup'></a>Jupyter Setup
+This repo is designed so that the Jupyter notebooks can be run from the project root directory. All the dependencies
+for Jupyter are listed in `dev-requirements.txt`. All Jupyter notebooks are in the `notebooks/` directory.
+
+- Start up the virtual environment `source .venv/bin/activate`
+- Install the dev dependencies `pip install -r dev-requirements.txt`
+- The virtual environment needs to be registered with Jupyter so that the notebooks can use the same environment.
+```bash
+python -m ipykernel install --user --name=hello-python --display-name "Python (hello-python)"
+```
+- This will create a new kernel named "Python (hello-python)" that you can select from within the Jupyter interface.
+
+- Lauch the Jupyter notebook server - `jupyter notebook`
+- Make sure to use the correct kernel. When you create a new notebook (or open an existing one) 
+    - Go to the "Kernel" menu
+    - Select "Change kernel"
+    - Choose **"Python (hello-python)"** from the list.
+
+This ensures your notebook is executing code with the same Python interpreter and packages as the rest of your project.
 
 ## <a name='OtherDeveloperNotes'></a>Other Developer Notes
 ### <a name='ConfiguretheGituserforthisrepo'></a>Configure the Git user for this repo

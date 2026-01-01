@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from calculator import add, subtract
 
 # Load environment variables from .env file
 # See README.md and https://pypi.org/project/python-dotenv/  for details on usage
@@ -16,9 +17,15 @@ def get_foo_value():
     return foo_value
 
 
-def add(a, b):
-    return a + b
+def main():
+    """Main function to run when the script is executed directly."""
+    try:
+        foo = get_foo_value()
+        print(f"The value of FOO is: {foo}")
+        print(f"Result of add(5, 3): {add(5, 3)}")
+    except ValueError as e:
+        print(e)
 
 
-def subtract(a, b):
-    return a - b
+if __name__ == "__main__":
+    main()
