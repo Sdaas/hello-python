@@ -237,6 +237,17 @@ python -m ipykernel install --user --name=hello-python --display-name "Python (h
 
 This ensures your notebook is executing code with the same Python interpreter and packages as the rest of your project.
 
+#### nbconvert
+
+The `nbconvert` tool is included with Jupyter and allows you to convert Jupyter notebooks to various formats including Python scripts, HTML, PDF, and Markdown. It also supports executing notebooks and clearing outputs.
+
+- Convert to a python script - `jupyter nbconvert --to script notebooks/app.ipynb`
+- Convert to markdown - `jupyter nbconvert --to markdown notebooks/app.ipynb`
+- Clear outputs - `jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace notebooks/app.ipynb`
+- Execute and save notebook - `jupyter nbconvert --to notebook --execute --inplace notebooks/app.ipynb`
+
+See https://nbconvert.readthedocs.io/en/latest/ for more details.
+
 ## <a name='OtherDeveloperNotes'></a>Other Developer Notes
 ### <a name='ConfiguretheGituserforthisrepo'></a>Configure the Git user for this repo
 
