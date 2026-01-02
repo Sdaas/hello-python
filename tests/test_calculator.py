@@ -1,4 +1,5 @@
-from calculator import add, subtract
+from calculator import add, subtract, factorial
+import pytest
 
 
 def test_add():
@@ -13,3 +14,21 @@ def test_subtract():
     assert subtract(0, 0) == 0
     assert subtract(1, -1) == 2
     assert subtract(-5, -3) == -2
+
+
+def test_factorial_positive_integers():
+    assert factorial(0) == 1
+    assert factorial(1) == 1
+    assert factorial(5) == 120
+    assert factorial(10) == 3628800
+
+
+def test_factorial_invalid_input():
+    with pytest.raises(ValueError, match="Input must be a non-negative integer"):
+        factorial(-1)
+    with pytest.raises(ValueError, match="Input must be a non-negative integer"):
+        factorial(1.5)
+    with pytest.raises(ValueError, match="Input must be a non-negative integer"):
+        factorial("a")
+    with pytest.raises(ValueError, match="Input must be a non-negative integer"):
+        factorial(None)
