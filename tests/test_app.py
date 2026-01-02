@@ -35,7 +35,11 @@ def test_get_foo_value_when_not_set(mock_getenv):
     mock_getenv.return_value = None
 
     # Call the function and verify that it raises a ValueError
-    with pytest.raises(ValueError, match="Error: FOO environment variable is not set."):
+    # Note - pytest.raises() match uses regular expressions
+    # Hence the need to anchor it with ^ and $
+    with pytest.raises(
+        ValueError, match="^Error: FOO environment variable is not set$"
+    ):
         get_foo_value()
 
     # Ensure that os.getenv was called with the correct argument

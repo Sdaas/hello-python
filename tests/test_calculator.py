@@ -23,12 +23,16 @@ def test_factorial_positive_integers():
     assert factorial(10) == 3628800
 
 
+# Note
+# pytest.raises() match uses regular expressions
+# Hence the need to anchor it with ^ and $
 def test_factorial_invalid_input():
-    with pytest.raises(ValueError, match="Input must be a non-negative integer"):
+    expected = "^Input must be a non-negative integer$"
+    with pytest.raises(ValueError, match=expected):
         factorial(-1)
-    with pytest.raises(ValueError, match="Input must be a non-negative integer"):
+    with pytest.raises(ValueError, match=expected):
         factorial(1.5)
-    with pytest.raises(ValueError, match="Input must be a non-negative integer"):
+    with pytest.raises(ValueError, match=expected):
         factorial("a")
-    with pytest.raises(ValueError, match="Input must be a non-negative integer"):
+    with pytest.raises(ValueError, match=expected):
         factorial(None)

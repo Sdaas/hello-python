@@ -13,7 +13,7 @@ def get_foo_value():
     """
     foo_value = os.getenv("FOO")
     if foo_value is None:
-        raise ValueError("Error: FOO environment variable is not set.")
+        raise ValueError("Error: FOO environment variable is not set")
     return foo_value
 
 
