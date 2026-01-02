@@ -16,6 +16,9 @@ coverage.xml
 # Pytest
 .pytest_cache/
 
+# Mutattion testing - mutmut
+mutants/
+
 # Python cache
 __pycache__/
 *.pyc

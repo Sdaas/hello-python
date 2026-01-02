@@ -36,7 +36,11 @@ Note
 		* [python-dotenv](#python-dotenv)
 	* [Testing](#Testing)
 		* [Logging with Pytest](#LoggingwithPytest)
+	* [Coverage Tests](#CoverageTests)
+	* [Mutation Tests](#MutationTests)
 	* [Jupyter Setup](#JupyterSetup)
+		* [Using packages in editable mode](#Usingpackagesineditablemode)
+		* [nbconvert](#nbconvert)
 * [Other Developer Notes](#OtherDeveloperNotes)
 	* [Configure the Git user for this repo](#ConfiguretheGituserforthisrepo)
 	* [Setup SSH keys for Github](#SetupSSHkeysforGithub)
@@ -214,7 +218,7 @@ To see all the log messages regardless of whether the test passes or fails, run
 ```bash
 pytest -v --log-cli-level=INFO
 ```
-### Coverage Tests
+### <a name='CoverageTests'></a>Coverage Tests
 
 Test coverage is done via [coverage](https://coverage.readthedocs.io/en/latest/)
 ```bash
@@ -223,6 +227,20 @@ coverage report -m  # generate a coverage report
 coverage html  # generate an HTML report
 ```
 
+### <a name='MutationTests'></a>Mutation Tests
+
+Mutation testing is done via [mutmut](https://mutmut.readthedocs.io/en/latest/)
+
+```bash
+mutmut run  # run mutation tests
+mutmut results  # show mutation test results
+mutmut html  # generate an HTML report
+```
+
+Also see
+* https://about.codecov.io/blog/getting-started-with-mutation-testing-in-python-with-mutmut/
+* https://medium.com/@dead-pixel.club/mutation-testing-in-python-using-mutmut-a094ad486050 
+ 
 ### <a name='JupyterSetup'></a>Jupyter Setup
 This repo is designed so that the Jupyter notebooks can be run from the project root directory. All the dependencies
 for Jupyter are listed in `dev-requirements.txt`. All Jupyter notebooks are in the `notebooks/` directory.
@@ -243,7 +261,7 @@ python -m ipykernel install --user --name=hello-python --display-name "Python (h
 
 This ensures your notebook is executing code with the same Python interpreter and packages as the rest of your project.
 
-#### Using packages in editable mode
+#### <a name='Usingpackagesineditablemode'></a>Using packages in editable mode
 By default, Jupyter notebooks do not reflect changes made to the source code of modules immediately. To enable this, all the modules in this repo must be installed in "editable" mode.
 
 From the project root directory, run
@@ -265,7 +283,7 @@ In a Jupyter notebook cell, run the following commands:
 - `%load_ext autoreload`: This loads the `autoreload` extension.
 - `%autoreload 2`: This sets the `autoreload` mode to automatically reload all modules before executing any code.
 
-#### nbconvert
+#### <a name='nbconvert'></a>nbconvert
 
 The `nbconvert` tool is included with Jupyter and allows you to convert Jupyter notebooks to various formats including Python scripts, HTML, PDF, and Markdown. It also supports executing notebooks and clearing outputs.
 
