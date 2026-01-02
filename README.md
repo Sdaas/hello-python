@@ -125,26 +125,20 @@ Note
 
 ### <a name='Installingandmanagingdependencies'></a>Installing and managing dependencies
 
-All dependencies should be listed in `requirements.txt` file. 
+All runtime dependencies should be listed in `requirements.txt` file. All developer dependencies (like Jupyter, pytest, etc) should be listed in `dev-requirements.txt` file.
 
 - Make sure that the virtual environment is activated.
 - Install all dependencies - `pip install -r requirements.txt`
 - Install all the developer dependencies - `pip install -r dev-requirements.txt`
 - All these dependencies will be installed in the virtual environment.
 
-To install a new package, do the following
-- Install the package `pip install xxx`
-- Capture the current env into a file `pip freeze > requirements.txt` and check this into git.
+To install a new package, run `pip install xxx` and then append it to the correct requirements file.
 
-FWIW, this entire process can be automated by adding the following snippet in `~/.zshrc`
-```zsh
-pyinstall() {
-    pip install "$@"
-    pip freeze > requirements.txt
-    echo "Updated requirements.txt with the latest packages."
-}
+Alternately, run the `./pyinstall.sh` script below to install packages and update the requirements file automatically.
 ```
-Now just run `pyinstall xxx` and the `requirements.txt` file will be updated so you will not forget to commit it.
+./pyinstall.sh requests # Also updates requirements.txt
+./pyinstall.sh --dev black flake8 # Also updates dev-requirements.txt
+```
 
 ### <a name='UsefulPackages'></a>Useful Packages
 This repo is already setup with some useful packages. Here are some of them
