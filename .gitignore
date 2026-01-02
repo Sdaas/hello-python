@@ -7,6 +7,15 @@
 # Jupyter stuff
 .ipynb_checkpoints/
 
+# Coverage
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Pytest
+.pytest_cache/
+
 # Python cache
 __pycache__/
 *.pyc

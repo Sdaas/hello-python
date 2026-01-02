@@ -74,9 +74,11 @@ Note
 - `app.py` - Main application file
 - `calculator` - Sample package
 - `setup.py` - Setup file for all the packages
-- `tests` - All unit tests are in this folder
 - `requirements.txt` - all dependencies
 - `dev-requirements.txt` - all developer dependencies including Jupyter
+- `pyinstall.sh` - Script to install new packages and update requirements files
+- `pre-commit` - Pre-commit hook to clear notebook outputs. Copy this to `.git/hooks/pre-commit` and make it executable
+- `tests` - All unit tests are in this folder
 - `notebooks` - Jupyter notebooks go here
 - `.env` - Environment variables go here (don't check into git pls)
 
@@ -211,6 +213,14 @@ To see all the log messages regardless of whether the test passes or fails, run
 
 ```bash
 pytest -v --log-cli-level=INFO
+```
+### Coverage Tests
+
+Test coverage is done via [coverage](https://coverage.readthedocs.io/en/latest/)
+```bash
+coverage run -m pytest # run the tests with coverage
+coverage report -m  # generate a coverage report
+coverage html  # generate an HTML report
 ```
 
 ### <a name='JupyterSetup'></a>Jupyter Setup
