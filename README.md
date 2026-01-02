@@ -229,13 +229,24 @@ coverage html  # generate an HTML report
 
 ### <a name='MutationTests'></a>Mutation Tests
 
-Mutation testing is done via [mutmut](https://mutmut.readthedocs.io/en/latest/)
+Mutation testing is done via [mutmut](https://mutmut.readthedocs.io/en/latest/). 
 
-```bash
-mutmut run  # run mutation tests
-mutmut results  # show mutation test results
-mutmut html  # generate an HTML report
+- The `setup.cfg` file is already configured for mutmut
+- First run coverage tests `coverage run -m pytest`. ( since `setup.cfg` says `use_coverage=True`)
+- Run mutation tests `mutmut run`
+- View the results `mutmut results`
+
+This will generate a report like
 ```
+app.x_get_foo_value__mutmut_7: survived
+app.x_main__mutmut_1: no tests
+calculator.x_factorial__mutmut_6: survived
+```
+- Run `mutmut show <mutant_name>` to see the details of a specific mutant (e.g. `mutmut show calculator.x_factorial__mutmut_6`)
+This will show exactly what was changed in the code to create the mutant.
+
+- Run 'mutmut browser` to see an interactive HTML report of all the mutants
+
 
 Also see
 * https://about.codecov.io/blog/getting-started-with-mutation-testing-in-python-with-mutmut/
