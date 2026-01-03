@@ -75,9 +75,12 @@ Note
 
 ## <a name='ImportantFilesandFolders'></a>Important Files and Folders
 
+- `Makefile` - the make file
 - `app.py` - Main application file
 - `calculator` - Sample package
-- `setup.py` - Setup file for all the packages
+- `setup.py` - Setup file for all the packages. Required for Jupyter editable installs
+- `setup.cfg` - Configuration file for `mutmut` (mutation testing tool)
+- `.coveragerc` - Configuration file for `coverage` tool
 - `requirements.txt` - all dependencies
 - `dev-requirements.txt` - all developer dependencies including Jupyter
 - `pyinstall.sh` - Script to install new packages and update requirements files
@@ -122,13 +125,6 @@ Install the following Extensions
 - To exit the virtualenv, run `deactivate`
 
 
-Note
-
-- To Update the environment requirements - `pip freeze > requirements.txt` and check this into git
-- Sometimes Jupyter notebook will not find a freshly installed packages. To fix this, just
-`deactivate` and then reactivate the virtual environment.
-
-
 ### <a name='Installingandmanagingdependencies'></a>Installing and managing dependencies
 
 All runtime dependencies should be listed in `requirements.txt` file. All developer dependencies (like Jupyter, pytest, etc) should be listed in `dev-requirements.txt` file.
@@ -145,6 +141,8 @@ Alternately, run the `./pyinstall.sh` script below to install packages and updat
 ./pyinstall.sh requests # Also updates requirements.txt
 ./pyinstall.sh --dev black flake8 # Also updates dev-requirements.txt
 ```
+
+Important : DONT use `pip freeze > requirements.txt`. This will list all the packages in the virtual environment including transient dependencies. Instead, manually maintain the `requirements.txt` file with only the direct dependencies of your project
 
 ### <a name='UsefulPackages'></a>Useful Packages
 This repo is already setup with some useful packages. Here are some of them
@@ -304,6 +302,10 @@ The `nbconvert` tool is included with Jupyter and allows you to convert Jupyter 
 - Execute and save notebook - `jupyter nbconvert --to notebook --execute --inplace notebooks/app.ipynb`
 
 See https://nbconvert.readthedocs.io/en/latest/ for more details.
+
+### Cleanup temporary files
+
+Run `make clean` to cleanup temporary files like `__pycache__`, coverage reports, and mutmut cache.
 
 ## <a name='OtherDeveloperNotes'></a>Other Developer Notes
 ### <a name='ConfiguretheGituserforthisrepo'></a>Configure the Git user for this repo

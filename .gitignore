@@ -4,6 +4,12 @@
 # Environment variables file
 .env
 
+# Distribution / Packaging
+*.egg-info/
+.eggs/
+dist/
+build/
+
 # Jupyter stuff
 .ipynb_checkpoints/
 
@@ -16,7 +22,7 @@ coverage.xml
 # Pytest
 .pytest_cache/
 
-# Mutattion testing - mutmut
+# Mutation testing - mutmut
 mutants/
 
 # Python cache
