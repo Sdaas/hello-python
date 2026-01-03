@@ -1,17 +1,11 @@
-import os
-from dotenv import load_dotenv
 from calculator import add, subtract
-
-# Load environment variables from .env file
-# See README.md and https://pypi.org/project/python-dotenv/  for details on usage
-load_dotenv()
-
+from envtool import getenv
 
 def get_foo_value():
     """
     Returns the value of the FOO environment variable. Throws a ValueError if FOO is not set.g
     """
-    foo_value = os.getenv("FOO")
+    foo_value = getenv("FOO")
     if foo_value is None:
         raise ValueError("Error: FOO environment variable is not set")
     return foo_value

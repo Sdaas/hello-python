@@ -2,4 +2,5 @@
 source =
     app
     calculator
+    envtool
 branch = True

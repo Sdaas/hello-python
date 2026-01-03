@@ -61,8 +61,13 @@ Note
 - Install dependencies - `pip install -r requirements.txt`
 - Install developer dependencies - `pip install -r dev-requirements.txt`
 - Command Line
-    - Run all the tests - `pytest -v`
     - Run the app - `python app.py`
+    - Run all the tests - `pytest -v`
+    - Run coverage tests - `coverage run -m pytest`
+    - Generate coverage report - `coverage report -m`
+    - Run mutation tests `mutmut run`
+    - View the results `mutmut results`
+
 - Jupyter Notebooks
     - Register the virtual environment with Jupyter
     ```bash
