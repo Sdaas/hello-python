@@ -1,7 +1,11 @@
-
 # Context
 
-This is a boilerplate repo for setting up python and jupyter notebook based projects.
+This is a boilerplate repo for setting up python and jupyter notebook based projects. It has suppor for packages, unit tests, coverage tests, mutation tests, and jupyter notebooks.
+
+When using this, please make sure to change the following
+- Change the project name from `hello-python` to something relevant. ( and fix refs in `setup.py` and `README.md`)
+- Remove the `calculator` package ( and its references in `setup.cfg` and `.coveragec`)
+- Update this README.md file to reflect the new project details
 
 # Table of Contents
 <!-- 
