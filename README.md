@@ -298,7 +298,7 @@ The `nbconvert` tool is included with Jupyter and allows you to convert Jupyter 
 
 - Convert to a python script - `jupyter nbconvert --to script notebooks/app.ipynb`
 - Convert to markdown - `jupyter nbconvert --to markdown notebooks/app.ipynb`
-- Clear outputs - `jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace notebooks/app.ipynb`
+- Clear outputs - `jupyter nbconvert --to notebook --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --inplace notebooks/app.ipynb`
 - Execute and save notebook - `jupyter nbconvert --to notebook --execute --inplace notebooks/app.ipynb`
 
 See https://nbconvert.readthedocs.io/en/latest/ for more details.
