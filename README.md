@@ -60,7 +60,7 @@ Note
 ## <a name='JumpStartfortheImpatient'></a>Jump Start for the Impatient
 
 - Add `FOO=bar` to the `.env` file
-- Create a virtual environment - `virtualenv .venv`
+- Create a virtual environment - `python -m venv .venv`
 - Activate it - `source .venv/bin/activate`
 - Install dependencies - `pip install -r requirements.txt`
 - Install developer dependencies - `pip install -r dev-requirements.txt`
@@ -101,13 +101,20 @@ Note
 ## <a name='DeveloperSetup'></a>Developer Setup
 ### <a name='PythonSetup'></a>Python Setup
 
-We basically need to install `python` and `virtualenv`, and we will manage this using `pyenv`. 
+We basically need to install `python` and we will manage this using `pyenv`. 
 
 - List all the versions of python 3.x `pyenv install --list | grep " 3\." `
 - Install specific version of python. For example `pyenv install 3.10.6` 
 - Use the `pyenv versions` command to list the locally installed version(s)
 - Use `pyenv global 3.10.6` to use this version of Python Globally
-- Install virtualenv `pip install virtualenv`
+
+Add the following to your  `~/.zshrc` 
+
+```bash
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+```
 
 ### <a name='VisualCodeSetup'></a>Visual Code Setup
 
@@ -126,9 +133,8 @@ Install the following Extensions
 ### <a name='SetuptheVirtualEnvironment'></a>Setup the Virtual Environment    
 
 - See https://sourabhbajaj.com/mac-setup/Python/virtualenv.html 
-- Install virtualenv - `pip install virtualenv `
 - Go to the project root directory ...
-- Create a virtual environment - `virtualenv .venv`. You can have any name for the virtual env but `.venv` is recognized automatically by many tools.
+- Create a virtual environment - `python -m venv .venv`. You can have any name for the virtual env but `.venv` is recognized automatically by many tools.
 - Activate it - `source .venv/bin/activate` 
 - At this point running `which pip` and `which python` will point to the specific versions that were used to setup the environment. Similarly running `pip list` will show only the packages installed in this virtual env.
 - To exit the virtualenv, run `deactivate`
@@ -225,6 +231,12 @@ To see all the log messages regardless of whether the test passes or fails, run
 ```bash
 pytest -v --log-cli-level=INFO
 ```
+
+In python code, you need to set the logging level to `INFO` or `DEBUG` as needed
+```python
+logging.basicConfig(level=logging.INFO)
+```
+
 ### <a name='CoverageTests'></a>Coverage Tests
 
 Test coverage is done via [coverage](https://coverage.readthedocs.io/en/latest/)
